@@ -47,33 +47,45 @@ regex_domain = '^(127|0)\\.0\\.0\\.(0|1)[\\s\\t]+(?P<domain>([a-z0-9\\-_]+\\.)+[
 regex_no_comment = '^#.*|^$'
 
 lists = [
-    {'url': 'https://pgl.yoyo.org/as/serverlist.php?hostformat=nohtml&showintro=0', 'filter': regex_no_comment},
-    {'url': 'http://mirror1.malwaredomains.com/files/justdomains', 'filter': regex_no_comment},
+    {'url': 'https://pgl.yoyo.org/as/serverlist.php?hostformat=nohtml&showintro=0', 'regex': regex_domain, 'filter': regex_no_comment},
+    {'url': 'http://mirror1.malwaredomains.com/files/justdomains', 'regex': regex_domain, 'filter': regex_no_comment},
     {'url': 'http://winhelp2002.mvps.org/hosts.txt', 'regex': regex_domain, 'filter': regex_no_comment},
     {'url': 'https://adaway.org/hosts.txt', 'regex': regex_domain, 'filter': regex_no_comment},
-    {'url': 'https://hosts-file.net/ad_servers.txt', 'regex': regex_domain, 'filter': regex_no_comment},
     {'url': 'http://someonewhocares.org/hosts/zero/hosts', 'regex': regex_domain, 'filter': regex_no_comment},
-    {'url': 'https://www.malwaredomainlist.com/hostslist/hosts.txt', 'regex': regex_domain, 'filter': regex_no_comment},
-
-    #
-    # adlists from pi-hole: https://github.com/pi-hole/pi-hole/blob/master/adlists.default
-    #
-    # The below list amalgamates several lists we used previously.
-    # See `https://github.com/StevenBlack/hosts` for details
+    {'url': 'http://www.malwaredomainlist.com/hostslist/hosts.txt', 'regex': regex_domain, 'filter': regex_no_comment},
     # StevenBlack's list
     {'url': 'https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts', 'regex': regex_domain, 'filter': regex_no_comment},
-
     # Cameleon
     {'url': 'http://sysctl.org/cameleon/hosts', 'regex': regex_domain, 'filter': regex_no_comment},
-
     # Zeustracker
-    {'url': 'https://zeustracker.abuse.ch/blocklist.php?download=domainblocklist', 'filter': regex_no_comment},
-
-    # Disconnect.me Tracking
-    {'url': 'https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt', 'filter': regex_no_comment},
-
-    # Disconnect.me Ads
-    {'url': 'https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt', 'filter': regex_no_comment},
+    {'url': 'https://zeustracker.abuse.ch/blocklist.php?download=domainblocklist', 'regex': regex_domain, 'filter': regex_no_comment},
+    # hpHosts
+    {'url': 'https://hosts-file.net/download/hosts.txt', 'regex': regex_domain, 'filter': regex_no_comment},
+    # OpenPhish
+    {'url': 'https://openphish.com/feed.txt', 'regex': regex_domain, 'filter': regex_no_comment},
+    # CyberCrime tracker
+    {'url': 'http://cybercrime-tracker.net/all.php', 'regex': regex_domain, 'filter': regex_no_comment},
+    # Free Ads BL from SquidBlacklist
+    {'url': 'http://www.squidblacklist.org/downloads/dg-ads.acl', 'regex': regex_domain, 'filter': regex_no_comment},
+    
+    # Disconnect.me
+    {'url': 'https://s3.amazonaws.com/lists.disconnect.me/simple_malvertising.txt', 'regex': regex_domain, 'filter': regex_no_comment},
+    {'url': 'https://s3.amazonaws.com/lists.disconnect.me/simple_malware.txt', 'regex': regex_domain, 'filter': regex_no_comment},
+    {'url': 'https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt', 'regex': regex_domain, 'filter': regex_no_comment},
+    {'url': 'https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt', 'regex': regex_domain, 'filter': regex_no_comment},
+    
+    # Tracking & Telemetry & Advertising
+    {'url': 'https://v.firebog.net/hosts/Easyprivacy.txt', 'regex': regex_domain, 'filter': regex_no_comment},
+    {'url': 'https://v.firebog.net/hosts/Easylist.txt', 'regex': regex_domain, 'filter': regex_no_comment},
+    {'url': 'https://v.firebog.net/hosts/AdguardDNS.txt', 'regex': regex_domain, 'filter': regex_no_comment},
+    
+    # Malicious list
+    {'url': 'http://v.firebog.net/hosts/Shalla-mal.txt', 'regex': regex_domain, 'filter': regex_no_comment},
+    {'url': 'https://v.firebog.net/hosts/Cybercrime.txt', 'regex': regex_domain, 'filter': regex_no_comment},
+    {'url': 'https://v.firebog.net/hosts/APT1Rep.txt', 'regex': regex_domain, 'filter': regex_no_comment},
+    {'url': 'http://someonewhocares.org/hosts/hosts', 'regex': regex_domain, 'filter': regex_no_comment},
+    {'url': 'http://www.joewein.net/dl/bl/dom-bl.txt', 'regex': regex_domain, 'filter': regex_no_comment},
+    {'url': 'https://isc.sans.edu/feeds/suspiciousdomains_Medium.txt', 'regex': regex_domain, 'filter': regex_no_comment}
 ]
 
 def download_list(url):
