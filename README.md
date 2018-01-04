@@ -2,7 +2,7 @@
 
 Fetch various blocklists and generate a BIND zone from them.
 
-Configure BIND to return `NXDOMAIN` for ad and tracking domains to stop clients from contacting them.
+Configure BIND to redirect to `drop.local` (walled garden) for ad, tracking and malicious domains to stop clients from contacting them.
 
 Requires BIND 9.8 or newer for [RPZ](https://en.wikipedia.org/wiki/Response_policy_zone) support.
 
@@ -12,14 +12,15 @@ Uses the following sources:
 * [Malware domains](http://www.malwaredomains.com/)
 * [MVPS HOSTS](http://winhelp2002.mvps.org/)
 * [Adaway default blocklist](https://adaway.org/hosts.txt)
-* [hpHosts Ad and Tracking servers only](https://hosts-file.net/)
+* [hpHosts](https://hosts-file.net/)
 * [Dan Pollock’s hosts file](http://someonewhocares.org/hosts/zero/)
 * [MalwareDomainList.com Hosts List](https://www.malwaredomainlist.com/hostslist/hosts.txt)
 * [StevenBlack Unified hosts file](https://github.com/StevenBlack/hosts)
 * [CAMELEON](http://sysctl.org/cameleon/)
 * [ZeuS domain blocklist (Standard)](https://zeustracker.abuse.ch/blocklist.php)
-* [Disconnect.me Basic tracking list](https://disconnect.me/trackerprotection)
-* [Disconnect.me Ad Filter list](https://disconnect.me/trackerprotection)
+* [Disconnect.me](https://disconnect.me/trackerprotection)
+* [The Big Blocklist Collection](https://v.firebog.net)
+* [OpenPhish](https://openphish.com)
 
 ## Setup
 
