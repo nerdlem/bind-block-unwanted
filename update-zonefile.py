@@ -115,6 +115,10 @@ def download_list(url):
                 os.utime(str(cache), times=(last_modified, last_modified))
 
             return r.text
+        elif r.status_code == 304:
+            print(url + " NOT MODIFIED")
+        else:
+            print("Error getting list at " + url + " HTTP STATUS:" + str(r.status_code))        
     except requests.exceptions.RequestException as e:
         print(e)
 
