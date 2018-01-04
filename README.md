@@ -18,7 +18,7 @@ Uses the following sources:
 * [StevenBlack Unified hosts file](https://github.com/StevenBlack/hosts)
 * [CAMELEON](http://sysctl.org/cameleon/)
 * [ZeuS domain blocklist (Standard)](https://zeustracker.abuse.ch/blocklist.php)
-* [Disconnect.me](https://disconnect.me/trackerprotection)
+* [Disconnect.me](https://disconnect.me/)
 * [The Big Blocklist Collection](https://v.firebog.net)
 * [OpenPhish](https://openphish.com)
 * [Free Ads BL from SquidBlacklist](http://www.squidblacklist.org)
