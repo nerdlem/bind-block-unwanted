@@ -111,7 +111,8 @@ def download_list(url):
             return f.read()
 
 def check_domain(domain, origin):
-    if domain == '':
+    #As per RFC1035, the DNS name maximum length is 255 bytes
+    if domain == '' or len(domain)>200:
         return False
 
     try:
