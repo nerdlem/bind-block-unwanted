@@ -214,8 +214,9 @@ zone.to_file(zonefile)
 
 with Path(zonefile).open('a') as f:
     for d in (sorted(domains)):
-        f.write(d + ' IN CNAME .\n')
+        f.write(d + ' IN CNAME drop.local.\n')
         if config['wildcard_block']:
-            f.write('*.' + d + ' IN CNAME .\n')
-
+            f.write('*.' + d + ' IN CNAME drop.local.\n')
+            
+print("Done")
 reload_zone(origin)
