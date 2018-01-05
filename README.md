@@ -83,9 +83,13 @@ zone "rpz.blacklist" {
 * zonefile: Path to the zone file to update
 * origin: Zone origin to use
 
-Example: `update-zonefile.py /var/named/db.rpz.blacklist rpz.blacklist`
+Example: `python3 update-zonefile.py /var/named/db.rpz.blacklist rpz.blacklist`
+	 `named-checkzone admin /var/named/db.rpz.blacklist
+		                /var/named/db.rpz.blacklist:3: using RFC1035 TTL semantics
+                                zone admin/IN: loaded serial 201702126
+				OK`
 
-`update-zonefile.py` will update the zone file with the fetched lists.
+`update-zonefile.py` will update the specified zone file with the fetched lists.
 The RPZ zone file created will transfer each blocked domain to your walled garden `.local`. e.g.:
 
 malicious-domain1.com IN CNAME drop.local
