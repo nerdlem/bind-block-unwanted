@@ -36,6 +36,24 @@ These packages need to be installed to run the update script.
 
 ### Configure BIND
 
+Create a local domain named `.local` to sinkhole. Replace `192.168.1.220` with the IP address of your sinkhole server.
+```
+@ 8600 IN SOA  local. root.local. (201702121 604800 86400 2419200 604800 )
+@ 8600 IN NS   LOCALHOST.
+@ IN A 192.168.1.220
+* A 192.168.1.220
+```
+Add the `.local` zone to the BIND configuration
+
+```
+zone "local." {
+        type master;
+        file "/var/named/db.local";
+        allow-update { none; };
+        allow-transfer { none; };
+        allow-query { trusted-acl;};
+};
+```
 Add the `response-policy` statement to the BIND options
 
 ```
@@ -45,7 +63,7 @@ response-policy {
 };
 ```
 
-Add your rpz zone. Replace example.com with a domain of your choice.
+Add your RPZ zone.
 
 ```
 // Blacklist zone
