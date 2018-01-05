@@ -158,7 +158,7 @@ def load_zone(zonefile, origin):
 
     if not path.exists():
         with path.open('w') as f:
-            f.write('@ 8600 IN SOA  localhost. need.to.know.only. (201702121 3600 600 86400 600 )\n@ 8600 IN NS   LOCALHOST.'.format(origin))
+            f.write('@ 8600 IN SOA  admin. need.to.know.only. (201702121 3600 600 86400 600 )\n@ 8600 IN NS   LOCALHOST.'.format(origin))
         print(textwrap.dedent('''\
                 Zone file "{0}" created.
 
