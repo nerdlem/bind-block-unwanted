@@ -36,14 +36,14 @@ These packages need to be installed to run the update script.
 
 ### Configure BIND
 
-Create a local domain to sinkhole. Replace `192.168.1.220` with the IP address of your sinkhole server.
+Create a local domain (`.local`) for the sinkhole. Replace `192.168.1.220` with the IP address of your sinkhole server.
 ```
 @ 8600 IN SOA  local. root.local. (201702121 604800 86400 2419200 604800 )
 @ 8600 IN NS   LOCALHOST.
 @ IN A 192.168.1.220
 * A 192.168.1.220
 ```
-Add the `.local` zone to the BIND configuration
+Add the this newly created domain `.local` zone to the BIND configuration
 
 ```
 zone "local." {
@@ -91,5 +91,9 @@ Create a zone file for your zone.
 
 Example: `update-zonefile.py /var/named/db.rpz.blacklist rpz.blacklist`
 
-`update-zonefile.py` will update the zone file with the fetched adserver lists and issue a `rndc reload origin` afterwards.
+`update-zonefile.py` will update the zone file with the fetched lists.
+The RPZ zone file created will transfer each blocked domain to your walled garden `.local`. e.g.:
 
+malicious-domain1.com IN CNAME drop.local
+
+malicious-domain2.com IN CNAME drop.local
