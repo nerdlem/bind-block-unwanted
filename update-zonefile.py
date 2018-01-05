@@ -186,12 +186,6 @@ def update_serial(zone):
     soa = zone.get_rdataset('@', dns.rdatatype.SOA)[0]
     soa.serial += 1
 
-def reload_zone(origin):
-    cmd = ['rndc', 'reload', origin]
-    r = subprocess.call(cmd)
-    if r != 0:
-        raise Exception('rndc failed with return code {}'.format(r))
-
 def usage(code=0):
     print('Usage: update-zonefile.py zonefile origin')
     exit(code)
@@ -216,4 +210,3 @@ with Path(zonefile).open('a') as f:
             f.write('*.' + d + ' IN CNAME drop.local.\n')
             
 print("Done")
-reload_zone(origin)
