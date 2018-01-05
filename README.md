@@ -84,7 +84,9 @@ zone "rpz.blacklist" {
 * origin: Zone origin to use
 
 Example: `python3 update-zonefile.py /var/named/db.rpz.blacklist rpz.blacklist`
-	 `named-checkzone admin /var/named/db.rpz.blacklist
+
+Verification of the zone file with `named-checkzone`:
+	 `[root@localhost]#named-checkzone admin /var/named/db.rpz.blacklist
 		                /var/named/db.rpz.blacklist:3: using RFC1035 TTL semantics
                                 zone admin/IN: loaded serial 201702126
 				OK`
