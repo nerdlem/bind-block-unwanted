@@ -76,12 +76,6 @@ zone "rpz.blacklist" {
 };
 ```
 
-Create a zone file for your zone.
-```
-@ 8600 IN SOA  admin. need.to.know.only. (201702121 3600 600 86400 600 )
-@ 8600 IN NS   LOCALHOST.
-```
-
 ## Usage
 
     update-zonefile.py zonefile origin
