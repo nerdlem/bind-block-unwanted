@@ -39,27 +39,29 @@ These packages need to be installed to run the update script.
 Add the `response-policy` statement to the BIND options
 
 ```
-// For AdBlock
+// Blacklist RPZ
 response-policy {
-	zone "rpz.example.com";
+	zone "rpz.blacklist";
 };
 ```
 
 Add your rpz zone. Replace example.com with a domain of your choice.
 
 ```
-// AdBlock
-zone "rpz.example.com" {
-	type master;
-	file "/etc/bind/db.rpz.example.com";
-	allow-query { none; };
+// Blacklist zone
+zone "rpz.blacklist" {
+        type master;
+        file "/var/named/db.rpz.blacklist";
+        allow-update { none; };
+        allow-transfer { none; };
+        allow-query { none; };
 };
 ```
 
-Create a zone file for your zone. Replace example.com with the domain you used before.
+Create a zone file for your zone.
 ```
-@ 3600 IN SOA @ admin.example.com. 0 86400 7200 2592000 86400
-@ 3600 IN NS ns.example.com.
+@ 8600 IN SOA  admin. need.to.know.only. (201702121 3600 600 86400 600 )
+@ 8600 IN NS   LOCALHOST.
 ```
 
 ## Usage
@@ -69,7 +71,7 @@ Create a zone file for your zone. Replace example.com with the domain you used b
 * zonefile: Path to the zone file to update
 * origin: Zone origin to use
 
-Example: `update-zonefile.py /etc/bind/db.rpz.example.com rpz.example.com`
+Example: `update-zonefile.py /var/named/db.rpz.blacklist rpz.blacklist`
 
 `update-zonefile.py` will update the zone file with the fetched adserver lists and issue a `rndc reload origin` afterwards.
 
