@@ -36,7 +36,7 @@ These packages need to be installed to run the update script.
 
 ### Configure BIND
 
-Create a local domain named `.local` to sinkhole. Replace `192.168.1.220` with the IP address of your sinkhole server.
+Create a local domain to sinkhole. Replace `192.168.1.220` with the IP address of your sinkhole server.
 ```
 @ 8600 IN SOA  local. root.local. (201702121 604800 86400 2419200 604800 )
 @ 8600 IN NS   LOCALHOST.
