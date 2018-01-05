@@ -92,10 +92,3 @@ Verification of the zone file with `named-checkzone`:
 zone admin/IN: loaded serial 201702126
 OK
 ```
-
-`update-zonefile.py` will update the specified zone file with the fetched lists.
-The RPZ zone file created will transfer each blocked domain to your walled garden `.local`. e.g.:
-
-malicious-domain1.com IN CNAME drop.local
-
-malicious-domain2.com IN CNAME drop.local
