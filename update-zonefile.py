@@ -78,7 +78,7 @@ def download_list(url):
         last_modified = datetime.utcfromtimestamp(cache.stat().st_mtime)
         headers = {
                 'If-modified-since': eut.format_datetime(last_modified),
-                'User-Agent': 'Bind adblock zonfile updater v1.0 (https://github.com/Trellmor/bind-adblock)'
+                'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36'
                 }
 
     try:
@@ -93,9 +93,7 @@ def download_list(url):
                 os.utime(str(cache), times=(last_modified, last_modified))
 
             return r.text
-        elif r.status_code == 304:
-            print(url + " NOT MODIFIED")
-        else:
+        elif r.status_code != 304:
             print("Error getting list at " + url + " HTTP STATUS:" + str(r.status_code))        
     except requests.exceptions.RequestException as e:
         print(e)
