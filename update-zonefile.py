@@ -61,7 +61,7 @@ lists = [
     {'url': 'http://v.firebog.net/hosts/Shalla-mal.txt', 'filter': regex_no_comment},
     {'url': 'https://v.firebog.net/hosts/Cybercrime.txt', 'filter': regex_no_comment},
     {'url': 'https://v.firebog.net/hosts/APT1Rep.txt', 'filter': regex_no_comment},
-    {'url': 'http://someonewhocares.org/hosts/hosts', 'filter': regex_no_comment},
+    {'url': 'http://someonewhocares.org/hosts/hosts', 'regex': regex_domain, 'filter': regex_no_comment},
     {'url': 'http://www.joewein.net/dl/bl/dom-bl.txt', 'filter': regex_no_comment},
     {'url': 'https://isc.sans.edu/feeds/suspiciousdomains_Medium.txt', 'filter': regex_no_comment}
 ]
