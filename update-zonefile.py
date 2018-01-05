@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 
 import requests
 from pathlib import Path
@@ -22,7 +22,11 @@ config = {
 }
 
 regex_domain = '^(127|0)\\.0\\.0\\.(0|1)[\\s\\t]+(?P<domain>([a-z0-9\\-_]+\\.)+[a-z][a-z0-9_-]*)$'
+regex_domain_only = "^([a-z][a-z0-9+\-.]*://)([a-z0-9\-._~%!$&'()*+,;=]+@)?(?P<domain>([a-z0-9\-.+_~%]+|\[[a-z0-9\-._~%!$&'()*+,;=:]+\]))"
 regex_no_comment = '^#.*|^$'
+regex_skip_space = '^(?P<domain>.[^\s]{2,}.)$'
+regex_drop_semicolon = '^(?P<domain>[^;]*)'
+regex_drop_slash = "(?P<domain>[^(\/)?]*)"
 
 lists = [
     {'url': 'https://pgl.yoyo.org/as/serverlist.php?hostformat=nohtml&showintro=0', 'filter': regex_no_comment},
@@ -40,15 +44,15 @@ lists = [
     # hpHosts
     {'url': 'https://hosts-file.net/download/hosts.txt', 'regex': regex_domain, 'filter': regex_no_comment},
     # OpenPhish
-    {'url': 'https://openphish.com/feed.txt', 'filter': regex_no_comment},
+    {'url': 'https://openphish.com/feed.txt', 'regex': regex_domain_only, 'filter': regex_no_comment},
     # CyberCrime tracker
-    {'url': 'http://cybercrime-tracker.net/all.php', 'filter': regex_no_comment},
+    {'url': 'http://cybercrime-tracker.net/all.php', 'regex': regex_drop_slash, 'filter': regex_no_comment},
     # Free Ads BL from SquidBlacklist
     {'url': 'http://www.squidblacklist.org/downloads/dg-ads.acl', 'filter': regex_no_comment},
     
     # Disconnect.me
-    {'url': 'https://s3.amazonaws.com/lists.disconnect.me/simple_malvertising.txt', 'filter': regex_no_comment},
-    {'url': 'https://s3.amazonaws.com/lists.disconnect.me/simple_malware.txt', 'filter': regex_no_comment},
+    {'url': 'https://s3.amazonaws.com/lists.disconnect.me/simple_malvertising.txt', 'regex': regex_skip_space, 'filter': regex_no_comment},
+    {'url': 'https://s3.amazonaws.com/lists.disconnect.me/simple_malware.txt', 'regex': regex_skip_space,'filter': regex_no_comment},
     {'url': 'https://s3.amazonaws.com/lists.disconnect.me/simple_tracking.txt', 'filter': regex_no_comment},
     {'url': 'https://s3.amazonaws.com/lists.disconnect.me/simple_ad.txt', 'filter': regex_no_comment},
     
@@ -61,7 +65,7 @@ lists = [
     {'url': 'http://v.firebog.net/hosts/Shalla-mal.txt', 'filter': regex_no_comment},
     {'url': 'https://v.firebog.net/hosts/Cybercrime.txt', 'filter': regex_no_comment},
     {'url': 'https://v.firebog.net/hosts/APT1Rep.txt', 'filter': regex_no_comment},
-    {'url': 'http://www.joewein.net/dl/bl/dom-bl.txt', 'filter': regex_no_comment},
+    {'url': 'http://www.joewein.net/dl/bl/dom-bl.txt', 'regex': regex_drop_semicolon, 'filter': regex_no_comment},
     {'url': 'https://isc.sans.edu/feeds/suspiciousdomains_Medium.txt', 'filter': regex_no_comment}
 ]
 
