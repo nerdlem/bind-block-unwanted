@@ -1,4 +1,4 @@
-# BIND unwanted domain blocker
+# BIND unwanted domains blocker
 
 Fetch various blocklists and generate a BIND zone from them.
 
