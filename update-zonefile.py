@@ -208,8 +208,8 @@ zone.to_file(zonefile)
 
 with Path(zonefile).open('a') as f:
     for d in (sorted(domains)):
-        f.write(d + ' IN CNAME drop.local.\n')
+        f.write(d + ' IN CNAME drop.sinkhole.\n')
         if config['wildcard_block']:
-            f.write('*.' + d + ' IN CNAME drop.local.\n')
+            f.write('*.' + d + ' IN CNAME drop.sinkhole.\n')
             
 print("Done")
