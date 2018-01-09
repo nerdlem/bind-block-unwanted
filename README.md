@@ -2,7 +2,7 @@
 
 Fetch various blocklists and generate a BIND zone from them.
 
-Configure BIND to redirect to `drop.local` (walled garden) for ad, tracking and malicious domains to stop clients from contacting them.
+Configure BIND to redirect to `drop.sinkhole` (walled garden) for ad, tracking and malicious domains to stop clients from contacting them.
 
 Requires BIND 9.8 or newer for [RPZ](https://en.wikipedia.org/wiki/Response_policy_zone) support.
 
@@ -36,19 +36,19 @@ These packages need to be installed to run the update script.
 
 ### Configure BIND
 
-Create a local domain (`.local`) for the sinkhole. Replace `192.168.1.220` with the IP address of your sinkhole server.
+Create a local domain (`.sinkhole`) for the sinkhole. Replace `192.168.1.220` with the IP address of your sinkhole server.
 ```
-@ 8600 IN SOA  local. root.local. (201702121 604800 86400 2419200 604800 )
+@ 8600 IN SOA  .sinkhole root.sinkhole. (201702121 604800 86400 2419200 604800 )
 @ 8600 IN NS   LOCALHOST.
 @ IN A 192.168.1.220
 * A 192.168.1.220
 ```
-Add the this newly created domain `.local` zone to the BIND configuration
+Add the this newly created domain `.sinkhole` zone to the BIND configuration
 
 ```
-zone "local." {
+zone "sinkhole." {
         type master;
-        file "/var/named/db.local";
+        file "/var/named/db.sinkhole";
         allow-update { none; };
         allow-transfer { none; };
         allow-query { trusted-acl;};
