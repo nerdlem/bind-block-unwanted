@@ -43,7 +43,7 @@ Create a local domain (`.sinkhole`) for the sinkhole. Replace `192.168.1.220` wi
 @ IN A 192.168.1.220
 * A 192.168.1.220
 ```
-Add the this newly created domain `.sinkhole` zone to the BIND configuration
+Add the newly created domain `.sinkhole` zone to the BIND configuration
 
 ```
 zone "sinkhole." {
