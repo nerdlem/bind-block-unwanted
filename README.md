@@ -12,12 +12,11 @@ Uses the following sources:
 * [Malware domains](http://www.malwaredomains.com/)
 * [MVPS HOSTS](http://winhelp2002.mvps.org/)
 * [Adaway default blocklist](https://adaway.org/hosts.txt)
-* [hpHosts](https://hosts-file.net/)
+* [hpHosts](https://hosts-file.net/) – seems to be inactive
 * [Dan Pollock’s hosts file](http://someonewhocares.org/hosts/zero/)
 * [MalwareDomainList.com Hosts List](https://www.malwaredomainlist.com/hostslist/hosts.txt)
 * [StevenBlack Unified hosts file](https://github.com/StevenBlack/hosts)
 * [CAMELEON](http://sysctl.org/cameleon/)
-* [ZeuS domain blocklist (Standard)](https://zeustracker.abuse.ch/blocklist.php)
 * [Disconnect.me](https://disconnect.me/)
 * [The Big Blocklist Collection](https://v.firebog.net)
 * [OpenPhish](https://openphish.com)

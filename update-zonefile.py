@@ -39,16 +39,16 @@ lists = [
     {'url': 'https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts', 'regex': regex_domain, 'filter': regex_no_comment},
     # Cameleon
     {'url': 'http://sysctl.org/cameleon/hosts', 'regex': regex_domain, 'filter': regex_no_comment},
-    # Zeustracker
-    {'url': 'https://zeustracker.abuse.ch/blocklist.php?download=domainblocklist', 'filter': regex_no_comment},
     # hpHosts
-    {'url': 'https://hosts-file.net/download/hosts.txt', 'regex': regex_domain, 'filter': regex_no_comment},
+    # (Still alive?)
+    # {'url': 'https://hosts-file.net/download/hosts.txt', 'regex': regex_domain, 'filter': regex_no_comment},
     # OpenPhish
     {'url': 'https://openphish.com/feed.txt', 'regex': regex_domain_only, 'filter': regex_no_comment},
     # CyberCrime tracker
     {'url': 'http://cybercrime-tracker.net/all.php', 'regex': regex_drop_slash, 'filter': regex_no_comment},
     # Free Ads BL from SquidBlacklist
-    {'url': 'http://www.squidblacklist.org/downloads/dg-ads.acl', 'filter': regex_no_comment},
+    # (Possibly moved)
+    # {'url': 'http://www.squidblacklist.org/downloads/dg-ads.acl', 'filter': regex_no_comment},
     
     # Disconnect.me
     {'url': 'https://s3.amazonaws.com/lists.disconnect.me/simple_malvertising.txt', 'regex': regex_skip_space, 'filter': regex_no_comment},
